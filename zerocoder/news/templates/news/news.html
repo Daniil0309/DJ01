@@ -1,19 +1,27 @@
 {% extends 'main/layoute.html' %}
 
 {% block title %}
-    <title> новостная страница</title>
+    Новостная страница
 {% endblock %}
 
 {% block content %}
 <div class="text-center mt-5">
     <h1>Новостная страница</h1>
-
-    {% for new in news %}
-        <div>
-            <h3>{{ new.user_name }}</h3>
-           <h3>{{ new.title }}</h3>
-           <p>{{ new.short_description }}</p>
+    {% if news %}
+        <div class="row justify-content-center">
+            {% for new in news %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ new.title }}</h3>
+                            <p class="card-text">{{ new.short_description }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
+    {% else %}
+        <h4>Новостей нет</h4>
+    {% endif %}
 </div>
 {% endblock %}
